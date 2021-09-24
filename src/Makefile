@@ -51,9 +51,9 @@ endif
 
 # Mac OSX
 ifeq ($(OS), OSX)
-LFLAGS = -framework Cocoa
+LFLAGS = -framework Cocoa -L/opt/local/lib
 USIM_LIBS = -lSDLmain -lSDL -lpthread -lobjc
-CFLAGS = -g -O $(DEFINES)
+CFLAGS = -g -O $(DEFINES) -I/opt/local/include
 # good for G5
 #CFLAGS = -fast $(DEFINES)
 endif
