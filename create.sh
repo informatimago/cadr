@@ -1,6 +1,11 @@
 #!/bin/bash
 # Create CADR
 
+echo 'DO NOT RUN THIS SCRIPT ANYMORE; THIS REPOSITORY HAS ALREADY BEEN'
+echo 'CREATED AND PATCHED BY IT.'
+exit 0
+
+
 pushd $(dirname $0) > /dev/null
 SCRIPT=$(pwd)/$(basename $0)
 popd > /dev/null
