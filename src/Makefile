@@ -21,8 +21,10 @@ endif
 DISPLAY = SDL
 #DISPLAY = X11
 
-KEYBOARD = OLD
-#KEYBOARD = NEW
+#KEYBOARD = OLD
+KEYBOARD = NEW
+
+DEBUG = -DKBD_DEBUG
 
 #----------- code ------------
 
@@ -51,11 +53,9 @@ endif
 
 # Mac OSX
 ifeq ($(OS), OSX)
-LFLAGS = -framework Cocoa -L/opt/local/lib
+LFLAGS = -g -framework Cocoa -L/opt/local/lib
 USIM_LIBS = -lSDLmain -lSDL -lpthread -lobjc
-CFLAGS = -g -O $(DEFINES) -I/opt/local/include
-# good for G5
-#CFLAGS = -fast $(DEFINES)
+CFLAGS = -g -O2 $(DEFINES) $(DEBUG) -I/opt/local/include
 endif
 
 ifeq ($(DISPLAY), X11)
@@ -67,10 +67,10 @@ endif
 ifeq ($(OS), LINUX)
 #CFLAGS = -g
 #CFLAGS = -O -pg -g -fprofile-arcs
-#CFLAGS= -O3 -march=pentium3 -mfpmath=sse -mmmx -msse $(DEFINES) -Wall
-#CFLAGS = -O3 -fomit-frame-pointer -mcpu=i686 -g $(DEFINES)
-#CFLAGS= -O3 -mfpmath=sse -mmmx -msse $(DEFINES) -Wall
-CFLAGS = -O3 -mfpmath=sse -mmmx -msse $(DEFINES) -Wall $(M32) -g
+#CFLAGS= -O3 -march=pentium3 -mfpmath=sse -mmmx -msse $(DEFINES) $(DEBUG) -Wall
+#CFLAGS = -O3 -fomit-frame-pointer -mcpu=i686 -g $(DEFINES) $(DEBUG)
+#CFLAGS= -O3 -mfpmath=sse -mmmx -msse $(DEFINES) $(DEBUG) -Wall
+CFLAGS = -O3 -mfpmath=sse -mmmx -msse $(DEFINES) $(DEBUG) -Wall $(M32) -g
 LFLAGS = $(M32) -L/usr/lib
 endif
 
@@ -109,5 +109,6 @@ lod: lod.c macro.c
 clean:
 	rm -f *.o usim lod readmcr diskmaker lmfs xx
 	rm -f *~
+	rm -rf *.dSYM
 
 
