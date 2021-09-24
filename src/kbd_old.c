@@ -15,6 +15,7 @@
 #endif
 
 #include "keyboard.h"
+#include "usim.h"
 
 #ifdef DISPLAY_X11
 #include <X11/Xlib.h>
