@@ -1,0 +1,25 @@
+# -*- mode:org-mode -*-
+
+* CADR Lisp Machine Simulator
+
+This is a fork of the CADR simulator, originally [[http://www.unlambda.com/cadr/][by Brad Parker]][1] and as
+modified [[https://github.com/joshuaeckroth/cadr][by Joshua Eckroth]][2].  This fork contains the .img and .bin files
+which are missing from Eckroth's version, and fixes a bug on OS X.  The origin
+of this project is documented in `create.sh`. (Do not run this script anymore).
+
+
+The simulator requires SDL and xz to build.  On macOS, it may be the
+SDL library obtained from `MacPort`:
+
+#+begin_src bas
+sudo port install libsdl
+#+end_src
+
+installed in `/opt/local/include` and `/opt/local/lib`.
+
+
+To make it go, run `make` followed by `./cadr`.
+
+--- 
+[1]: http://www.unlambda.com/cadr/
+[2]: https://github.com/joshuaeckroth/cadr
